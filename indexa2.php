@@ -1,12 +1,19 @@
-<?php
-// 1. إعداد المتغيرات
-$name = "عبد الودود";
-$age = 30;
-$role = "مطور PHP & Linux | متخصص في هندسة توزيع البيانات";
-$vision = "ابتكار أنظمة لتوزيع المستودعات البيانية بناءً على معادلات خاصة.";
-$skills = ["PHP", "Linux", "الشبكات", "Git"];
+<?php 
+include 'config.php';
 
-// 2. بداية كود HTML
+
+// 2. سحب البيانات من الجدول
+$sql = "SELECT * FROM profile_info LIMIT 1";
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_assoc($result);
+
+// وضع البيانات في متغيرات لاستخدامها في الصفحة
+$name = $data['name'];
+$age = $data['age'];
+$role = $data['role'];
+$vision = $data['vision'];
+$skills = ["PHP", "MySQL", "Linux", "Git"]; // سنقوم لاحقاً بوضعها في جدول منفصل
+
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
